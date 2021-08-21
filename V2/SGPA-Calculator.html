@@ -1,0 +1,278 @@
+---
+title: SGPA Calculator - VTU Standards | FutureVisionBIE | Version 1.0
+author: K B Hemanth Raj
+description: calculate your SGPA in easy steps. Fully automatic Calculator. For Free. No data stored
+keyword: VTU,SGPA, SGPA Calculator, Computation of SGPA and SGPA,SGPA Calculator Online, Semester Grade Point Average (SGPA) 
+---
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<link rel="icon" type="image/ico" href="https://hemanthrajhemu.github.io/FutureVisionBIE/logo.png" />
+	<!-- Tracking ID -->
+	{% if jekyll.environment == 'production' %}
+	{% include analytics.html %}
+	{% endif %}
+
+	<meta name="google-site-verification" content="google0186c8ef8f3bf22a.html">
+	<meta name="google-site-verification" content="googlead12f4cfae702c06.html">
+	<!-- indexing -->
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="robots" content="index, follow" />
+	<meta name=" keywords" content="{{ page.keyword }}" />
+	<link rel="stylesheet" href="https://hemanthrajhemu.github.io/DB/new.css">
+	<script src="https://hemanthrajhemu.github.io/DB/new.js">        </script>
+	<link rel="stylesheet" href="sgpa_2.css">
+	<script src="https://hemanthrajhemu.github.io/FutureVisionBIE/script.js">        </script>
+	<script type="text/javascript" src="sgpa_2.js"></script>
+	
+	{% if jekyll.environment == 'production' %}
+	{% include firebase.html %}
+	{% endif %}
+	
+	{% seo %}
+</head>
+
+<body>
+	<div id="main">
+		<!--Header Include-->
+		{% if jekyll.environment == 'production' %}
+		{% include header.html %}
+		{% endif %}
+		<!-- CENTER PATH FOR INFO  -->
+		<article>
+
+
+
+		<article>
+
+
+
+
+			<div class="desp tcenter">
+
+				<p>
+				<h1>Calculate the SGPA According to the VTU Standards.</h1>
+				</p>
+
+			</div>
+			<br />
+
+
+
+
+			<div class="container" id="Step1">
+				<h1 class="center">Step 1</h1>
+
+				<div class="row">
+					<div class="col-25">
+						<label for="scheme">Select the Scheme:</label>
+					</div>
+					<div class="col-75">
+						<select id="schemes" name="scheme">
+							<option value="15S">15 Scheme</option>
+							<option value="17S">17 Scheme</option>
+							<option value="18S">18 Scheme</option>
+
+
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-25">
+						<label for="branch">Select the Branch:</label>
+					</div>
+					<div class="col-75">
+						<select id="branchs" name="branch">
+							<option value="CSE">Computer Science</option>
+							<option value="ISE">Information Science</option>
+							<option value="ECE">Electronics And Communication</option>
+							<option value="ME">Mechanics</option>
+							<option value="CV">Civil</option>
+
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-25">
+						<label for="sem">Select the Semester:</label>
+					</div>
+					<div class="col-75">
+						<select id="sems" name="sem">
+
+							<option value="1sem">1</option>
+							<option value="2sem">2</option>
+							<option value="3sem">3</option>
+							<option value="4sem">4</option>
+							<option value="5sem">5</option>
+							<option value="6sem">6</option>
+							<option value="7sem">7</option>
+							<option value="8sem">8</option>
+
+						</select>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<input type="submit" value="Submit" onclick="showMarks()">
+
+					<input type="button" value="Clear" onclick="ClearData()">
+				</div><br />
+				<div class="row">
+					<input type="submit" onclick="WhatsappShare()" style="float:center;" value="Whatsapp Share">
+					</input>
+				</div>
+				<br />
+				<div class="row">
+					<input type="submit" value="CGPA Calculator"
+						onclick="window.location.href='https://hemanthrajhemu.github.io/CGPA-Calculator.html'">
+				</div>
+			</div>
+
+
+			<div class="container" id="Step2" style="display: none;">
+				<h1 class="center">Step 2</h1>
+				<div class="row" id="dynamicInput">
+				</div>
+				<br />
+				<div class="row">
+					<input type="submit" value="Calculate" onclick="calculate()">
+
+					<input type="button" value="Clear" onclick="ClearData()">
+				</div><br />
+				<div class="row">
+					<input type="submit" onclick="WhatsappShare()" style="float:center;" value="Whatsapp Share">
+					</input>
+				</div>
+				<br />
+				<div class="row">
+					<input type="submit" value="CGPA Calculator"
+						onclick="window.location.href='https://hemanthrajhemu.github.io/CGPA-Calculator.html'">
+				</div>
+			</div>
+
+
+			<div class="container" id="Step3" style="display: none;">
+				<h1 class="center">Step 3</h1>
+				<div class="desp" id="SGPAResult"></div>
+				<div class="desp" id="infoSGPA"></div>
+
+				<br /><br /><br />
+				<div>
+					<div class="center" style="overflow-x:auto;">
+						<table id="SGPATable" class="center">
+							<tr>
+								<th>Subject Code</th>
+								<th>Subject Name</th>
+								<th>Obtained Marks</th>
+								<th>Percentage</th>
+								<th>Credit</th>
+								<th>Grade Point</th>
+								<th>Grade Letter</th>
+								<th>Credit Points (Credit * Grade)</th>
+							</tr>
+
+						</table>
+					</div>
+				</div>
+				<div class="desp" id="FinalSGPA"></div>
+
+				<br />
+				<div class="row">
+					<input type="button" value="Clear" onclick="ClearData()">
+				</div><br />
+				<div class="row">
+					<input type="submit" onclick="WhatsappShare()" style="float:center;" value="Whatsapp Share">
+					</input>
+				</div>
+				<br />
+				<div class="row">
+					<input type="submit" value="CGPA Calculator" onclick="window.location.href='CGPA-Calculator.html'">
+				</div>
+
+			</div>
+
+			<div class="desp" id="Load" style="display: none;">
+				<h1 class="center">Loading Please Wait</h1>
+			</div>
+
+
+			<div class="desp" id="NoLoad" style="display: none;">
+				<h1 class="center">Sorry to Inform You that we don't have the Combination of the Data on our DataBase
+				</h1>
+				<h1 class="center">But Don't Worry we got you Covered. You can use our Version 1 of SGPA Calculator</h1>
+				<div class="row">
+					<input type="submit" value="CGPA Calculator"
+						onclick="window.location.href='../SGPA-Calculator.html'">
+					<input type="button" value="Clear" onclick="ClearData()">
+				</div>
+			</div>
+
+			<div class="desp">
+
+				<p>
+				<h1>This is the Simple 3 Step SGPA Calculator.</h1>
+				<h1>Step 1 - Select your Scheme, Branch, Semester.</h1>
+				<h1>Step 2 - Enter the Marks Obtained.</h1>
+				<h1>Step 3 - Get your SGPA Automatically calculated.</h1>
+				<h1>Strictly Following VTU Rules in calculation of SGPA/CGPA</h1>
+				</p>
+
+			</div>
+
+			<br /><br />
+			<div class="lii"><a href="https://hemanthrajhemu.github.io/vtu_cal_rules.pdf">Download Rules By VTU</a>
+			</div>
+
+			<br />
+			<div class="lii"><a href="https://vtu.ac.in/wp-content/uploads/2019/12/becbcs2015-16.pdf"
+					target="_blank">VTU Offical Website Document</a>
+			</div>
+
+
+			<br />
+
+			<div class="alertA1">
+				<span class="closebtnA1" onclick="this.parentElement.style.display='none';">&times;</span>
+				<strong>SHARE</strong>
+				Share the SGPA Calculator to your Friends. & Do Support us by following us on Instagram <a
+					href="https://www.instagram.com/futurevisionbie/">@FutureVisionBIE</a>
+			</div>
+
+
+
+
+			<div class="alertA1">
+				<span class="closebtnA1" onclick="this.parentElement.style.display='none';">&times;</span>
+				<strong>Note</strong>
+				ANY PROBLEM IN DOWNLOADING, YOU ARE FREE TO CONTACT US...<br /><br /> -ADMIN
+			</div>
+
+			<!-- call out --->
+			<div class="callout">
+				<div class="callout-header">Note</div>
+				<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+				<div class="callout-container">
+					<p>we never save your Data Here. Percentage is Rounded off to 4 decimal points.
+					</p>
+				</div>
+			</div>
+
+			<br /><br />
+		</article>
+		<!--Footer Include 1-->
+		{% if jekyll.environment == 'production' %}
+		{% include footer.html %}
+		{% endif %}
+		
+		
+		
+
+	</div>
+</body>
+
+</html>
